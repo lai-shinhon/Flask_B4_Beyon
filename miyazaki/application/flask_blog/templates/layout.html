@@ -16,12 +16,15 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav navbar-right">
+                {% if not session.logged_in %}
                 <li class="nav-item">
                     <a class="nav-link" href="/login">ログイン</a>
                 </li>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">ログアウト</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -29,4 +32,5 @@
     <div class="blog-body">
         {% block body %}{% endblock %}
     </div>
+
 </div>
