@@ -1,28 +1,12 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %}
 
-<div class="feature col">
-    <p>給与</p>
-
-    <form action="{{ url_for('salaryout') }}" method="post">
-        <div>
-            <input type="number" name="salary" value="">
-        </div>
-    
-        <input class="btn btn-outline-primary" type="submit" value="計算する">
-        
-    </form>
-</div>
-
-
+{% block body %}
+<form action="{{ url_for('salaryout') }}" method=post>
+    <div class="form-group">
+        <label for="InputTitle">給与</label>
+        <input type="number" class="form-control" id="InputTitle" name="salary" value="{{ input }}">
+    </div>
+    <button type="submit" class="btn btn-primary">計算する</button>
+</form>
+<div>{{ text }}</div>
 {% endblock %}
-
-<!-- <form>
-    <fieldset disabled>
-      <legend>Disabled fieldset example</legend>
-      <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Disabled input</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </fieldset>
-</form> -->
