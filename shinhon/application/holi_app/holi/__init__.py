@@ -6,4 +6,4 @@ app.config.from_object('holi.config')
 
 db = SQLAlchemy(app)
 
-import holi.views
+from holi.views import views, form
