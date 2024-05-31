@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form action="{{ url_for('salaryout') }}" method=post>
+<form action="{{ url_for('outputSalary') }}" method=post>
     <div class="form-group">
         <label for="InputTitle">給与</label>
         <input type="number" class="form-control" id="InputTitle" name="salary" value="{{ input }}">
