@@ -1,12 +1,16 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from flask_blog import app
+from functools import wraps
 
-# @app.route('/')
-# def show_entries():
-#     print(session.get('logged_in'))
-#     if not session.get('logged_in'):
-#         return redirect(url_for('login'))
-#     return render_template('entries/index.html')
+def login_required(view):
+    @wraps(view)
+    def inner(*args, **kwargs):
+        if not session.get("logged_in"):
+            return redirect(url_for("login"))
+        print(f"args: {args}, kwargs: {kwargs}")
+        print(f"Calling {view.__name__}")
+        return view(*args, **kwargs)
+    return inner
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
