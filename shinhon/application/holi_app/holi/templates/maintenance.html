@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+<h6>処理結果</h6>
+<p>{{state}}</p>
+<div>
+    <a href="{{ url_for('show_entries') }}" class="btn btn-primary">戻る</a>
+</div>
+{% endblock %}
+
