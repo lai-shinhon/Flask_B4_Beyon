@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<ul class="list-group list-group-flush" style="margin-top: 30px;">
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">祝日</th>
+            <th scope="col">テキスト</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for holiday in holidays %}
+                <tr>
+                    <th scope="row">{{ holiday.holi_date }}</th>
+                    <td>{{ holiday.holi_text }}</td>
+                </tr>
+            {% else %}
+                祝日がありません
+            {% endfor %}
+        </tbody>
+    </table>
+</ul>
+
+<a href="/" class="btn btn-primary">戻る</a>
+
+{% endblock %}
