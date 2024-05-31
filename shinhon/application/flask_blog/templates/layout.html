@@ -24,25 +24,29 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav navbar-right">
+                    {% if not session.logged_in %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">ログイン</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('new_entry') }}">新規投稿</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}">ログアウト</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
 
         {% for message in get_flashed_messages() %}
-        <div class="alert alert-info" role="alert">!!{{ message }}</div>
+        <div class="alert alert-info" role="alert">{{ message }}</div>
         {% endfor %}
 
         <div class="blog-body">
             {% block body %}{% endblock %}
         </div>
-
-        {% block script %}{% endblock %}
 
     </div>
 </body>

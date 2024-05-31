@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<table class="table mt-5">
+    <thead>
+        <tr class="bg-info">
+            <th scope="col">祝日</th>
+            <th scope="col">テキスト</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in holidays %}
+        <tr>
+            <th scope="row">{{ item.holi_date }}</th>
+            <td>{{ item.holi_text }}</td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+<div class="mt-5 pb-5">
+    <a href="{{ url_for('show_entries') }}" class="btn btn-primary">戻る</a>
+</div>
+{% endblock %}

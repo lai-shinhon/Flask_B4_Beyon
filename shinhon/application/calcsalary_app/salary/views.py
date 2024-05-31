@@ -43,7 +43,9 @@ def outputSalary():
             salary_output = f"給与:{input_salary}、支給額:{input_salary-tax}、税額:{tax}"
 
     else:
-        print(f"input: {type(request.form['salary'])}")
+        session['input_data'] = ""
+        # print(f"input: {type(request.form['salary'])}")
         flash("数値を入力してください")
+        return redirect(url_for('show_entries'))
 
     return render_template('output.html', salary=salary_output)
