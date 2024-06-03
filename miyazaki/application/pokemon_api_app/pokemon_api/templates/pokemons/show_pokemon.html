@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('index_page') }}">Pokemon Get App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <p id="image"><img src="{{pokemon.image_url}}" alt="" id="image_src" ></p>
+    <p id="id" name="pokemon_id">id：{{pokemon.id}}</p>
+    <p id="name" name="pokemon_name">名前：{{pokemon.name}}</p>
+    <p id="height" name="pokemon_height">高さ：{{pokemon.height}}m</p>
+    <p id="weight" name="pokemon_weight">重さ：{{pokemon.weight}}kg</p>
+    <p id="types" name="pokemon_types">タイプ：{{pokemon.types}}</p>
+
+    <form action="{{ url_for('delete_pokemon', name=pokemon.name) }}" method="post">
+        <button type="submit" class="btn btn-danger" style="margin-left:5px">逃がす</button>
+    </form>
+
+    <a href="/" class="btn btn-primary">戻る</a>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        const get_pokemon = async() => {
+            id = Math.floor( Math.random() * 1010 ) + 1;
+            // id = document.getElementById("pokemon_no").value
+            fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    pokemon_data = data
+                })
+                .catch(error => console.error('Error:', error));
+            
+            // 1秒待つ
+            const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+            await _sleep(1000);
+
+
+            document.getElementById("image_src").src = pokemon_data['sprites']['front_default'];
+            document.getElementById("name").textContent = pokemon_data['name'];
+            document.getElementById("height").textContent = pokemon_data['height'];
+            document.getElementById("weight").textContent = pokemon_data['weight'];
+            document.getElementById("types").textContent = pokemon_data['types'][0]['type']['name'];
+
+            document.getElementById("input_id").value = pokemon_data['id'];
+            document.getElementById("imageSrcField").value = pokemon_data['sprites']['front_default'];
+            document.getElementById("input_name").value = pokemon_data['name'];
+            document.getElementById("input_height").value = pokemon_data['height'];
+            document.getElementById("input_weight").value = pokemon_data['weight'];
+            document.getElementById("input_types").value = pokemon_data['types'][0]['type']['name'];
+
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('index_page') }}">Pokemon Get App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    
+    <form action="{{ url_for('pokemon_get') }}" method=post>
+        <div>
+            <div>
+                
+                <p id="image"><img src="" alt="" id="image_src" ></p>
+                <p></p><span>名前：</span><span id="name" name="pokemon_name"></span></p>
+                <p></p><span>高さ：</span><span id="height" name="pokemon_height"></span><span>m</span></p>
+                <p></p><span>重さ：</span><span id="weight" name="pokemon_weight"></span><span>kg</span></p>
+                <p></p><span>タイプ：</span><span id="types" name="pokemon_types"></span></p>
+
+                <div class="hidden">
+                    <input type="text"  id="input_id" name="pokemon_id" value="">
+                    <input type="text"  id="imageSrcField" name="pokemon_image" value="">
+                    <input type="text"  id="input_name" name="pokemon_name" value="">
+                    <input type="text"  id="input_height" name="pokemon_height" value="">
+                    <input type="text"  id="input_weight" name="pokemon_weight" value="">
+                    <input type="text"  id="input_types" name="pokemon_types" value="">
+                </div>
+            </div>
+
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" name="search_button" onClick="get_pokemon()" >探す</button>
+            </div>
+
+
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary" name="submit_button">ゲット！</button>
+            </div>
+        </div>
+    </form>
+
+    <a href="/" class="btn btn-primary">戻る</a>
+</body>
+</html>
