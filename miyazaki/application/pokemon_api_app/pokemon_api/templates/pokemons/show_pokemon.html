@@ -25,11 +25,12 @@
     <p id="height" name="pokemon_height">高さ：{{pokemon.height}}m</p>
     <p id="weight" name="pokemon_weight">重さ：{{pokemon.weight}}kg</p>
     <p id="types" name="pokemon_types">タイプ：{{pokemon.types}}</p>
+    <p id="get" name="pokemon_get">ゲットした日：{{pokemon.get_at}}</p>
 
     <form action="{{ url_for('delete_pokemon', name=pokemon.name) }}" method="post">
         <button type="submit" class="btn btn-danger" style="margin-left:5px">逃がす</button>
     </form>
 
-    <a href="/" class="btn btn-primary">戻る</a>
+    <a href="/" class="btn btn-primary" style="margin-top: 20px;">戻る</a>
 </body>
 </html>
