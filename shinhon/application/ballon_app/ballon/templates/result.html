@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<div class="h-screen flex flex-wrap items-center justify-center -mx-5" x-data="Ballon" data-result="{{ result }}">
+<div class="h-screen flex flex-wrap items-center justify-center -mx-5" x-data="Ballon">
     <div class="w-3/12 px-5">
         <div class="bg-light w-full aspect-[9/16] relative">
             <div class="absolute w-full h-full top-0 left-0 flex items-center justify-center">
-                <div id="Ballon" class="bg-sec w-40 h-40 rounded-full scale-0" data-result="{{ result }}"></div>
+                <div id="Ballon" class="bg-sec w-40 h-40 rounded-full scale-0" data-result="{{ entry }}"></div>
             </div>
         </div>
         <div class="text-center mt-8">

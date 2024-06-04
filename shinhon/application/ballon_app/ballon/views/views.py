@@ -9,10 +9,9 @@ def show_entries():
 
 @app.route('/result/<int:id>', methods=["GET"])
 def show_result(id):
-    result = session.get('result', None)
     entry = Entry.query.get(id)
-    print(f"haha{result}")
-    return render_template("result.html", result=result, entry=entry)
+    # print(f"haha{result}")
+    return render_template("result.html", entry=entry)
 
 @app.route('/list', methods=["GET"])
 def show_list():
