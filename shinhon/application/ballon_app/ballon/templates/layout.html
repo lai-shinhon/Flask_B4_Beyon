@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballon</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs-requests@1.x.x/dist/plugin.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                fontSize: {
+                    base: '1rem',
+                    sm: '0.75rem',
+                    '6': '1.75rem',
+                    '7': '2rem',
+                    '10': '2.5rem'
+                },
+                screens: {
+                    'lg': '1232px',
+                    'xl': '1232px',
+                    '2xl': '1232px',
+                },
+                container: {
+                    padding: {
+                        DEFAULT: '1.25rem',
+                        sm: '1.25rem',
+                        lg: '1.25rem',
+                        xl: '1.25rem',
+                        '2xl': '6rem',
+                    },
+                },
+                extend: {
+                    colors: {
+                        pri: "#A8D8F0",
+                        sec: "#6FC3B9",
+                        tri: "#91c7b1",
+                        light: "#F5F5F5",
+                        dark: "#54494b",
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container mx-auto">
+        {% block body %}{% endblock %}
+    </div>
+    {% block script %}{% endblock %}
+    
+</body>
+</html>

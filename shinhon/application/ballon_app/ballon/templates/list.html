@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="h-screen flex flex-wrap items-center justify-center -mx-5 pt-10" x-data="Ballon" data-result="{{ result }}">
+    <div class="w-6/12 px-5">
+        <table class="w-full">
+            <thead>
+                <tr class="text-sec border-b-2 border-solid border-dark">
+                    <th class="px-2 py-3 text-left">メッセージ</th>
+                    <th class="px-2 py-3">入れた空気 / <br> 風船のサイズ</th>
+                    <th class="px-2 py-3 text-right">結果</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in messages %}
+                <tr class="border-b border-solid border-dark">
+                    <td class="px-2 py-3">{{ item.message }}</td>
+                    <td class="px-2 py-3 text-center">{{ item.air }} / {{ item.size }}</td>
+                    <td class="px-2 py-3 text-right">{{ "炸裂して送れません" if item.air > item.size else "発送に成功した" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="text-center mt-8 pb-10">
+            <a href="{{ url_for('show_entries') }}" class="leading-7 py-2 px-10 text-white bg-sec hover:opacity-80 ease-in-out duration-300 rounded-[30px]">戻る</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

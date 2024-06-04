@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="h-screen flex flex-wrap items-center justify-center -mx-5">
+    <div class="w-5/12 pl-10 pr-5">
+        <div class="relative pl-1.5">
+            <div class="absolute w-1.5 h-20 top-0 left-0 bg-pri rounded-md"></div>
+            <div class="text-7 font-light leading-10 ml-3">メッセージを<br>書いてください</div>
+        </div>
+        <div class="mt-8">
+            <form action="{{ url_for('prepare_ready') }}" method="post">
+                <div>
+                    <label for="message"></label>
+                    <input class="bg-light w-full rounded-md leading-7 font-normal py-4 px-2" type="text" id="Message" name="message">
+                </div>
+                <div class="mt-8">
+                    <label for="input_air">空気の量を決める(0~100)</label>
+                    <input class="bg-light w-full rounded-md leading-7 font-normal py-4 px-2 mt-4" type="number" id="InputAir" name="input_air" max="100">
+                </div>
+                <div class="text-center mt-8">
+                    <button class="leading-7 py-2 px-10 text-white bg-sec hover:opacity-80 ease-in-out duration-300 rounded-[30px]" type="submit">準備完了</button>
+                </div>
+            </form>
+            <div class="text-center mt-8">
+                <a href="{{ url_for('show_list') }}" class="leading-7 py-2 px-10 text-sec border-sec border-2 border-solid hover:opacity-80 ease-in-out duration-300 rounded-[30px]">記録一覧</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

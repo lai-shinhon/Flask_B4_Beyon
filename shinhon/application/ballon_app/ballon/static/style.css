@@ -1,0 +1,21 @@
+:root {
+    font-family: "M PLUS 1p", sans-serif;
+}
+
+.arc {
+    --b: 10px;
+    /* the boder thickness */
+    --a: 240deg;
+    /* control the progression */
+
+    width: 140px;
+    aspect-ratio: 1;
+    padding: var(--b);
+    border-radius: 50%;
+    background: #A8D8F0;
+    --_g: /var(--b) var(--b) no-repeat radial-gradient(50% 50%, #000 97%, #0000);
+    mask: top var(--_g),
+        calc(50% + 50%*sin(var(--a))) calc(50% - 50%*cos(var(--a))) var(--_g),
+        linear-gradient(#0000 0 0) content-box intersect,
+        conic-gradient(#000 var(--a), #0000 0);
+}

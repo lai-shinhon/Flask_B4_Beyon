@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="h-screen flex flex-wrap items-center justify-center -mx-5" x-data="Ballon" data-result="{{ result }}">
+    <div class="w-3/12 px-5">
+        <div class="bg-light w-full aspect-[9/16] relative">
+            <div class="absolute w-full h-full top-0 left-0 flex items-center justify-center">
+                <div id="Ballon" class="bg-sec w-40 h-40 rounded-full scale-0" data-result="{{ result }}"></div>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <a href="{{ url_for('show_list') }}" class="leading-7 py-2 px-10 text-sec border-sec border-2 border-solid hover:opacity-80 ease-in-out duration-300 rounded-[30px]">記録一覧</a>
+        </div>
+    </div>
+    <div class="w-3/12 pl-10 pr-5">
+        <h6 class="text-7 text-sec">結果</h6>
+        <p class="mt-5 font-normal">「{{ entry.message }}」は<br>{{ "炸裂して送れません" if entry.air > entry.size else "発送に成功した" }}</p>
+        <div class="text-center mt-8 pb-10">
+            <a href="{{ url_for('show_entries') }}" class="leading-7 py-2 px-10 text-white bg-sec hover:opacity-80 ease-in-out duration-300 rounded-[30px]">戻る</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}
+
